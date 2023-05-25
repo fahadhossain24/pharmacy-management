@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AllProductShow from './AllProductShow';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AllProduct = () => {
     const [medicineInfo, setMedicineInfo] = useState([]);
@@ -37,27 +38,18 @@ const AllProduct = () => {
     }
 
     const handleAddToCart = (medicineObj) => {
+        setMedicine(medicineObj);
         if (userQuantity) {
-            setMedicine(medicineObj);
+            
             const { name, power, company, buyingPrice, salingPrice } = medicine;
-            const newMedicineObj = {
-                name, power, company, userQuantity, buyingPrice, salingPrice,
+            let quantity = parseInt(medicineObj.quantity) - parseInt(userQuantity)
+            
+            if (quantity < 0) {
+                quantity = 0;
+                toast.warning(`You are not able to add medicine ${userQuantity} pices`);
+                setUserQuantity('');
+                return;
             }
-
-            fetch('http://localhost:5000/cartMedicine', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newMedicineObj),
-            })
-                .then(res => res.json())
-                .then(data => {
-                    // console.log(data);
-                })
-            setUserQuantity(0);
-
-            const quantity = parseInt(medicineObj.quantity) - parseInt(userQuantity)
             const quantityWithString = quantity.toString();
             const newMedicineObjForUpdateQuantity = {
                 name, power, company, quantity: quantityWithString, buyingPrice, salingPrice,
@@ -75,6 +67,26 @@ const AllProduct = () => {
                 .then(data => {
                     // console.log(data)
                 });
+
+            // send medicine to cart.......
+            const newMedicineObj = {
+                name, power, company, userQuantity, buyingPrice, salingPrice,
+            }
+
+            fetch('http://localhost:5000/cartMedicine', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newMedicineObj),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    toast.success('medicine added')
+                })
+
+            setUserQuantity('');
         }
 
     }

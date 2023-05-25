@@ -28,8 +28,8 @@ const Header = () => {
     }
     return (
         <div>
-            <div className="navbar bg-base-300">
-                <div className="navbar-start">
+            <div className="navbar bg-base-300 text-white">
+                <div className="navbar-start w-[18%]">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -41,7 +41,7 @@ const Header = () => {
                             <li><Link to='/login'>Login</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Medicine Park</a>
+                    <a className="btn btn-ghost normal-case text-xl block">Medicine Park</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -51,7 +51,7 @@ const Header = () => {
                         {!user ? <li><Link to='/login'>Login</Link></li> : <li onClick={handleSignOut} className='my-auto cursor-pointer'>Sign Out</li>}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end w-[18%]">
                     <div className="indicator">
                         <span className="indicator-item badge badge-secondary mr-[70px] mt-[22px]">{medicines.length}</span>
                         <Link to='/cart' className="btn grid bg-base-300 place-items-center">cart</Link>

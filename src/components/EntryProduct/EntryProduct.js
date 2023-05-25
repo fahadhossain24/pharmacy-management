@@ -31,12 +31,11 @@ const EntryProduct = () => {
         .then(res => res.json())
         .then(data => {
             if(data.upsertedId){
-                console.log('insert successfull');
                 setIsLoading(false);
                 toast.success('Medicine entry successfull')
             }else{
-                console.log('update successfull')
                 setIsLoading(false);
+                toast.success('Medicine update successfull')
             }
         })
     }

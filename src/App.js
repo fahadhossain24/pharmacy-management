@@ -9,6 +9,7 @@ import Login from './components/login/Login';
 import Registration from './components/login/Registration';
 import Cart from './components/cart/Cart';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 function App() {

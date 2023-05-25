@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReactPDF from '@react-pdf/renderer';
 import Pdf from 'react-to-pdf';
 import ReactPrint from 'react-to-pdf'
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -9,6 +11,7 @@ const Cart = () => {
     const [medicines, setMedicines] = useState([]);
     let totalPrice = 0;
     const ref = useRef()
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/cartMedicine')
@@ -27,6 +30,8 @@ const Cart = () => {
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
+                    navigate('/allMedicine')
+                    toast.success('clear successfull');
                 })
         }
 

@@ -17,7 +17,7 @@ const AutoTypedText = () => {
     }, []);
 
     return (
-        <div>
+        <div className='text-white'>
             <span ref={el} />
         </div>
     );
