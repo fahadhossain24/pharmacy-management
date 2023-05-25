@@ -14,7 +14,7 @@ const Cart = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/cartMedicine')
+        fetch('https://pharmecy-management-server.vercel.app/cartMedicine')
             .then(res => res.json())
             .then(data => {
                 setMedicines(data);
@@ -24,7 +24,7 @@ const Cart = () => {
     const handleClearCart = () => {
         const confirm = window.confirm('Are you sure? you want to clear this cart')
         if (confirm) {
-            fetch('http://localhost:5000/cartMedicine', {
+            fetch('https://pharmecy-management-server.vercel.app/cartMedicine', {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -84,7 +84,7 @@ const Cart = () => {
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle text-black">
                 <div className="modal-box">
-                    
+
                     <div ref={ref}>
                         <h3 className="font-bold text-lg">Medicine Park</h3>
                         <div className='flex justify-around font-bold text-lg'>
@@ -111,14 +111,14 @@ const Cart = () => {
                             <h2 className='w-[110px] inline-block text-right font-bold'>Total: {totalPrice} tk</h2>
                         </div>
                     </div>
-                    
+
                     <div className="modal-action">
-                    <label htmlFor="my-modal-6" className="btn btn-warning">cancle</label>
-                    <Pdf targetRef={ref} filename="medicine-slip.pdf">
-                        {({ toPdf }) => (
-                            <button onClick={toPdf} className="button btn btn-success">Print</button>
-                        )}
-                    </Pdf>
+                        <label htmlFor="my-modal-6" className="btn btn-warning">cancle</label>
+                        <Pdf targetRef={ref} filename="medicine-slip.pdf">
+                            {({ toPdf }) => (
+                                <button onClick={toPdf} className="button btn btn-success">Print</button>
+                            )}
+                        </Pdf>
                     </div>
                 </div>
             </div>

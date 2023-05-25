@@ -19,7 +19,7 @@ const Home = () => {
         const searchName = searchTextArr[0];
         const searchPower = searchTextArr[1];
 
-        fetch(`http://localhost:5000/searchMedicine/${searchName}/${searchPower}`)
+        fetch(`https://pharmecy-management-server.vercel.app/searchMedicine/${searchName}/${searchPower}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -41,7 +41,7 @@ const Home = () => {
                 name, power, company, userQuantity, buyingPrice, salingPrice,
             }
 
-            fetch('http://localhost:5000/cartMedicine', {
+            fetch('https://pharmecy-management-server.vercel.app/cartMedicine', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Home = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if(data.insertedId){
+                    if (data.insertedId) {
                         setIsLoading(false);
                     }
                 })
@@ -62,7 +62,7 @@ const Home = () => {
             }
 
             setIsLoading(true);
-            fetch('http://localhost:5000/updateQunatity', {
+            fetch('https://pharmecy-management-server.vercel.app/updateQunatity', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ const Home = () => {
         handleMedicineSearch();
         handleAddToCart(searchReultObj);
     }
-    
+
     return (
         <>
             {
@@ -101,7 +101,7 @@ const Home = () => {
                             <AutoTypedText></AutoTypedText>
                         </div>
                         <div className='flex gap-2 absolute top-[50%] left-3 lg:left-[35%]  w-[550px]'>
-                            <input type="text" onKeyDown={(e) => e.key === "Enter"? handleEnterKey(searchResult) : ''} onChange={(event) => setSearchText((event.target.value).toLowerCase())} placeholder="Search Medicine..." className="input input-bordered input-warning w-full max-w-xs text-xl bg-transparent font-bold placeholder:text-yellow-500" />
+                            <input type="text" onKeyDown={(e) => e.key === "Enter" ? handleEnterKey(searchResult) : ''} onChange={(event) => setSearchText((event.target.value).toLowerCase())} placeholder="Search Medicine..." className="input input-bordered input-warning w-full max-w-xs text-xl bg-transparent font-bold placeholder:text-yellow-500" />
                             <button onClick={handleMedicineSearch} className='btn btn-warning'>Search</button>
                         </div>
                         <div className='absolute top-[60%] left-3 lg:left-[35%]  w-[550px] text-[25px]'>

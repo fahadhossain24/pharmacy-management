@@ -9,7 +9,7 @@ const AllProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/entryMedicine')
+        fetch('https://pharmecy-management-server.vercel.app/entryMedicine')
             .then(res => res.json())
             .then(data => {
                 if (data) {
@@ -23,7 +23,7 @@ const AllProduct = () => {
     const handleDelete = async (medicineName, medicinePower) => {
         const confirm = window.confirm('Do you want to delete this medicine?');
         if (confirm) {
-            await fetch(`http://localhost:5000/entryMedicine/${medicineName}/${medicinePower}`, {
+            await fetch(`https://pharmecy-management-server.vercel.app/entryMedicine/${medicineName}/${medicinePower}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -40,10 +40,10 @@ const AllProduct = () => {
     const handleAddToCart = (medicineObj) => {
         setMedicine(medicineObj);
         if (userQuantity) {
-            
+
             const { name, power, company, buyingPrice, salingPrice } = medicine;
             let quantity = parseInt(medicineObj.quantity) - parseInt(userQuantity)
-            
+
             if (quantity < 0) {
                 quantity = 0;
                 toast.warning(`You are not able to add medicine ${userQuantity} pices`);
@@ -56,7 +56,7 @@ const AllProduct = () => {
             }
 
             setIsLoading(true);
-            fetch('http://localhost:5000/updateQunatity', {
+            fetch('https://pharmecy-management-server.vercel.app/updateQunatity', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ const AllProduct = () => {
                 name, power, company, userQuantity, buyingPrice, salingPrice,
             }
 
-            fetch('http://localhost:5000/cartMedicine', {
+            fetch('https://pharmecy-management-server.vercel.app/cartMedicine', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -11,11 +11,11 @@ const Header = () => {
     const [medicines, setMedicines] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/cartMedicine')
-        .then(res => res.json())
-        .then(data => {
-            setMedicines(data);
-        })
+        fetch('https://pharmecy-management-server.vercel.app/cartMedicine')
+            .then(res => res.json())
+            .then(data => {
+                setMedicines(data);
+            })
     }, [medicines])
 
     if (loading) {
