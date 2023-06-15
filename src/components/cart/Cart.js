@@ -41,6 +41,11 @@ const Cart = () => {
         console.log('your slip here')
 
     }
+    const options = {
+        orientation: 'landscape',
+        unit: 'in',
+        format: [5, 3],
+    };
 
     return (
         <div className='text-center'>
@@ -85,7 +90,7 @@ const Cart = () => {
             <div className="modal modal-bottom sm:modal-middle text-black">
                 <div className="modal-box">
 
-                    <div ref={ref}>
+                    <div ref={ref} className='mx-auto'>
                         <h3 className="font-bold text-lg">Medicine Park</h3>
                         <div className='flex justify-around font-bold text-lg'>
                             <span>Name</span>
@@ -114,7 +119,7 @@ const Cart = () => {
 
                     <div className="modal-action">
                         <label htmlFor="my-modal-6" className="btn btn-warning">cancle</label>
-                        <Pdf targetRef={ref} filename="medicine-slip.pdf">
+                        <Pdf targetRef={ref} options={options} filename="medicine-slip.pdf">
                             {({ toPdf }) => (
                                 <button onClick={toPdf} className="button btn btn-success">Print</button>
                             )}

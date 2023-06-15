@@ -106,7 +106,7 @@ const Home = () => {
                         </div>
                         <div className='absolute top-[60%] left-3 lg:left-[35%]  w-[550px] text-[25px]'>
                             {searchResult._id ? <p className='mt-2 font-bold'>
-                                <span><span className='text-success'>In Stock avilable</span> - Quantity: {searchResult.quantity} pices <span onClick={() => handleAddToCart(searchResult)}><label htmlFor="my-modal-6" className="text-warning cursor-pointer btn">Add</label></span></span>
+                                <span><span className='text-warning'>In Stock avilable</span> <span className='text-white'>- Quantity: {searchResult.quantity} pices</span> <span onClick={() => handleAddToCart(searchResult)}><label htmlFor="my-modal-6" className="text-warning cursor-pointer btn">Add</label></span></span>
                             </p> : <p className='text-warning mt-2'>{searchResult.message}</p>}
                         </div>
                     </div>

@@ -133,7 +133,7 @@ const AllProduct = () => {
             <div className="modal modal-bottom sm:modal-middle text-black">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Medicine Information - Medicine Park</h3>
-                    <input onChange={(e) => setUserQuantity(e.target.value)} className='input input-bordered input-warning w-full max-w-xs mt-2' type="text" name="quantity" id="" />
+                    <input onChange={(e) => setUserQuantity(e.target.value)} placeholder='Quantity' className='input input-bordered input-warning w-full max-w-xs mt-2' type="text" name="quantity" id="" />
                     <div className="modal-action">
                         <label onClick={() => handleAddToCart(medicine)} htmlFor="my-modal-6" className="btn btn-warning">done</label>
                     </div>
